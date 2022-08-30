@@ -8,6 +8,7 @@ import SimulatorOption from './components/SimulatorOption';
 
 const CreditSimulatorMainScreen = () => {
   const [amount, setAmount] = useState(5000);
+  const [dues, setDues] = useState(3);
   
   return (
     <ContainerParent style={styles.container}>
@@ -24,6 +25,14 @@ const CreditSimulatorMainScreen = () => {
           minValue={5000}
           maxValue={50000}
           currency={true}
+        />
+        <SimulatorOption
+          name={"PLAZO"}
+          value={dues}
+          onValueChange={(value) => {setDues(value)}}
+          minValue={3}
+          maxValue={24}
+          step={3}
         />
       </View>
     </ContainerParent>
