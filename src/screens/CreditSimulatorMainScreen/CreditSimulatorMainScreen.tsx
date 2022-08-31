@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import ContainerParent from '../../components/ContainerParent';
 import Text, { FontFamily } from '../../components/Text';
+import Button from '../../components/Button';
 import Colors from '../../constants/Colors';
 import FontSize from '../../constants/FontSize';
 import AmountPerMonth from './components/AmountPerMonth';
@@ -36,6 +37,20 @@ const CreditSimulatorMainScreen = () => {
           step={3}
         />
         <AmountPerMonth amount={amount} fees={fees} />
+        <View style={styles.buttonContainer}>
+          <Button
+            label={"OBTENÉ CRÉDITO"}
+            onPress={() => {}}
+            style={styles.mainButton}
+            labelSize={FontSize.subtitle}
+          />
+          <Button
+            label={"VER DETALLE DE\nCUOTAS"}
+            onPress={() => {}}
+            color={Colors.lightBlue}
+            labelSize={FontSize.note}
+          />
+        </View>
       </View>
     </ContainerParent>
   );
@@ -57,6 +72,13 @@ const styles = StyleSheet.create({
     fontSize: FontSize.title,
     marginBottom: 16,
     textAlign: "center",
+  },
+  buttonContainer: {
+    flexDirection: "row"
+  },
+  mainButton: {
+    flex: 1,
+    marginRight: 8,
   }
 });
 
