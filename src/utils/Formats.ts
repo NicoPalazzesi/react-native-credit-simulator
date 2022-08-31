@@ -1,11 +1,11 @@
-const currency = (number: number, currency?: "ARS") => {
+const currency = (number: number, currency?: "ARS", precision = 0) => {
   const poundAR = Intl.NumberFormat(
     "es-AR",
     {
       style: currency ? "currency" : undefined,
       currency: currency ?? undefined,
       minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
+      maximumFractionDigits: precision,
     }
   );
   return poundAR.format(number);

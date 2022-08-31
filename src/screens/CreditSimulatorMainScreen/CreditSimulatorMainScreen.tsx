@@ -4,11 +4,12 @@ import ContainerParent from '../../components/ContainerParent';
 import Text, { FontFamily } from '../../components/Text';
 import Colors from '../../constants/Colors';
 import FontSize from '../../constants/FontSize';
+import AmountPerMonth from './components/AmountPerMonth';
 import SimulatorOption from './components/SimulatorOption';
 
 const CreditSimulatorMainScreen = () => {
   const [amount, setAmount] = useState(5000);
-  const [dues, setDues] = useState(3);
+  const [fees, setFees] = useState(3);
   
   return (
     <ContainerParent style={styles.container}>
@@ -28,12 +29,13 @@ const CreditSimulatorMainScreen = () => {
         />
         <SimulatorOption
           name={"PLAZO"}
-          value={dues}
-          onValueChange={(value) => {setDues(value)}}
+          value={fees}
+          onValueChange={(value) => {setFees(value)}}
           minValue={3}
           maxValue={24}
           step={3}
         />
+        <AmountPerMonth amount={amount} fees={fees} />
       </View>
     </ContainerParent>
   );
@@ -43,7 +45,7 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     justifyContent: "space-around",
-    paddingHorizontal: 32
+    paddingHorizontal: 16,
   },
   contentContainer: {
     paddingHorizontal: 16,
