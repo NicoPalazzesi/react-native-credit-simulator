@@ -8,10 +8,12 @@ import FontSize from '../../constants/FontSize';
 import AmountPerMonth from './components/AmountPerMonth';
 import SimulatorOption from './components/SimulatorOption';
 import FeesDetailsModal from './components/FeesDetailsModal';
+import GetCreditModal from './components/GetCreditModal';
 
 const CreditSimulatorMainScreen = () => {
   const [amount, setAmount] = useState(5000);
   const [fees, setFees] = useState(3);
+  const [showGetCredit, setShowGetCredit] = useState(false);
   const [showFeesDetails, setShowFeesDetails] = useState(false);
   
   return (
@@ -43,7 +45,7 @@ const CreditSimulatorMainScreen = () => {
           <View style={styles.buttonContainer}>
             <Button
               label={"OBTENÉ CRÉDITO"}
-              onPress={() => {}}
+              onPress={() => setShowGetCredit(true)}
               style={styles.mainButton}
               labelSize={FontSize.subtitle}
             />
@@ -57,6 +59,10 @@ const CreditSimulatorMainScreen = () => {
         </View>
       </ContainerParent>
 
+      <GetCreditModal
+        visible={showGetCredit}
+        onClose={() => setShowGetCredit(false)}
+      />
       <FeesDetailsModal
         visible={showFeesDetails}
         onClose={() => setShowFeesDetails(false)}
