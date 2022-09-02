@@ -3,43 +3,32 @@ import { Text as RNText, StyleSheet, TextStyle, StyleProp } from "react-native";
 import Colors from "../constants/Colors";
 import FontSize from "../constants/FontSize";
 
+export enum FontFamily {
+  Thin = "Montserrat-Thin",
+  ExtraLight = "Montserrat-ExtraLight",
+  Light = "Montserrat-Light",
+  Regular = "Montserrat-Regular",
+  Medium = "Montserrat-Medium",
+  SemiBold = "Montserrat-SemiBold",
+  Bold = "Montserrat-Bold",
+  ExtraBold = "Montserrat-ExtraBold",
+  Black = "Montserrat-Black",
+}
+
 interface TextProps {
   text: string | undefined;
   style?: StyleProp<TextStyle>;
-  fontFamily?:
-    "thin"
-    | "extraLight"
-    | "light"
-    | "regular"
-    | "medium"
-    | "semiBold"
-    | "bold"
-    | "extraBold"
-    | "black";
+  fontFamily?: FontFamily;
 }
-
-const getFontFamily = (fontFamily: string) => {
-  switch (fontFamily) {
-    case "thin": return "Montserrat-Thin";
-    case "extraLight": return "Montserrat-ExtraLight";
-    case "light": return "Montserrat-Light";
-    case "medium": return "Montserrat-Medium";
-    case "semiBold": return "Montserrat-SemiBold";
-    case "bold": return "Montserrat-Bold";
-    case "extraBold": return "Montserrat-ExtraBold";
-    case "black": return "Montserrat-Black";
-    default: return "Montserrat-Regular";
-  }
-};
 
 const Text = ({
   text,
   style,
-  fontFamily = "regular",
+  fontFamily =FontFamily.Regular,
 }: TextProps) => {
   const dynamicStyles = StyleSheet.create({
     text: {
-      fontFamily: getFontFamily(fontFamily),
+      fontFamily,
       fontSize: FontSize.paragraph,
       color: Colors.white,
     },
