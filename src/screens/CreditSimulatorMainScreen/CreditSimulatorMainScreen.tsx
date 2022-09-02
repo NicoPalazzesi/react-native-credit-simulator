@@ -10,9 +10,14 @@ import SimulatorOption from './components/SimulatorOption';
 import FeesDetailsModal from './components/FeesDetailsModal';
 import GetCreditModal from './components/GetCreditModal';
 
+const MIN_AMOUNT = 5000;
+const MAX_AMOUNT = 50000;
+const MIN_FEES = 3;
+const MAX_FEES = 24;
+
 const CreditSimulatorMainScreen = () => {
-  const [amount, setAmount] = useState(5000);
-  const [fees, setFees] = useState(3);
+  const [amount, setAmount] = useState(MIN_AMOUNT);
+  const [fees, setFees] = useState(MIN_FEES);
   const [showGetCredit, setShowGetCredit] = useState(false);
   const [showFeesDetails, setShowFeesDetails] = useState(false);
   
@@ -29,16 +34,16 @@ const CreditSimulatorMainScreen = () => {
             name={"MONTO TOTAL"}
             value={amount}
             onValueChange={(value) => {setAmount(value)}}
-            minValue={5000}
-            maxValue={50000}
+            minValue={MIN_AMOUNT}
+            maxValue={MAX_AMOUNT}
             currency={true}
           />
           <SimulatorOption
             name={"PLAZO"}
             value={fees}
             onValueChange={(value) => {setFees(value)}}
-            minValue={3}
-            maxValue={24}
+            minValue={MIN_FEES}
+            maxValue={MAX_FEES}
             step={3}
           />
           <AmountPerMonth amount={amount} fees={fees} />
